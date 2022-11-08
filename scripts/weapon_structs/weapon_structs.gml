@@ -1,9 +1,12 @@
-/*
-//Structs to organize and call different weapons and their poperties
-
 //_______________Weapon Structs__________________
-weaponDefault = 
+//Structs to organize and call different weapons and their poperties
+//Adding and = Value in the header creates a default value, helps avoid missing info errors
+function weapon_Spawn(_sprite, _bullet, _wLength, _shtCooldwn) constructor
 {
-	sprite : sDefaultWeapon
+	sprite = _sprite;
+	bullet = _bullet;
+	wLength = _wLength;
+	shtCooldwn = _shtCooldwn;
 }
-*/
+
+

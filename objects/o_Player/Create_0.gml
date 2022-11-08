@@ -37,16 +37,13 @@ aimDir = 0;
 #endregion
 
 //_______________Weapon Structs__________________
-weaponDefault = 
-{
-	sprite : sDefaultWeapon,
-	bullet : oBloodBullet,
-	wLength : 10,
-	shtCooldwn : 8
-}
 
 
+babyHead = new weapon_Spawn(sDefaultWeapon, oBloodBullet, 10, 8);
 
+
+//Maybe rename from weaponDefault -> WeaponInUse or something along those lines in future
+weaponDefault = babyHead;
 
 
 
