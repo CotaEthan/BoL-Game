@@ -1,5 +1,5 @@
-//First global variables for player movement
-//no var,let,or const keyword creates a GLOBAL variable
+//First variables for player movement - Not Local, or FULLY global
+//no var,let,or const keyword creates a variable accessable between events
 moveDir = 0;
 moveSpd = 3;
 //left and right
@@ -38,12 +38,15 @@ aimDir = 0;
 
 //_______________Weapon Structs__________________
 
+defaultWeapon = new weapon_Spawn(sDefaultWeapon, oBloodBullet, 10, 25, -3);
+sqGun = new weapon_Spawn(sWepSpray, oBloodBullet, 16, 15, -1);
+manGun = new weapon_Spawn(sManGun, oBloodBullet, 15, 10, 0 );
+bigGun = new weapon_Spawn(sBigOlGun, oBrightBullet, 17, 4, 4);
 
-babyHead = new weapon_Spawn(sDefaultWeapon, oBloodBullet, 10, 8);
 
 
 //Maybe rename from weaponDefault -> WeaponInUse or something along those lines in future
-weaponDefault = babyHead;
+weaponInUse = bigGun;
 
 
 

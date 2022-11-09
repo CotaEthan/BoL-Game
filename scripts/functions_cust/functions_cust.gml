@@ -15,5 +15,5 @@ function draw_Player_Weapon()
 
 	//ext (Extended) has more options than draw_sprite (like rotation, scale and color)
 	//draw_sprite_ext(sDefaultWeapon, 0, x + xOffset, centerY + yOffset, 1, wepYscale, aimDir, c_white, 1); 
-	draw_sprite_ext(weaponDefault.sprite, 0, x + xOffset, centerY + yOffset, 1, wepYscale, aimDir, c_white, 1); 
+	draw_sprite_ext(weaponInUse.sprite, 0, x + xOffset, centerY + yOffset, 1, wepYscale, aimDir, c_white, 1); 
 }

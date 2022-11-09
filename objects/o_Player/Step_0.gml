@@ -87,12 +87,14 @@ if(shootTmr > 0)
 if(weaponActivate && shootTmr <=0)
 {
 	//Reset timer first
-	shootTmr = weaponDefault.shtCooldwn;
+	shootTmr = weaponInUse.shtCooldwn;
 	//Add bullet offset to be spawned at. Make bullet apear near end of weapon
-	var xOffset = lengthdir_x(weaponDefault.wLength+wepOffsetDist, aimDir);
-	var yOffset = lengthdir_y(weaponDefault.wLength+wepOffsetDist, aimDir) - 3; //Added -3 just to hike up a tad
+	//Personal addition of the "weaponInUse.yMove" variable to more direct tweaks
+	// -> Inclusion of this variable may warrent removal/change of "weaponInUse.wLength+wepOffsetDist"
+	var xOffset = lengthdir_x(weaponInUse.wLength+wepOffsetDist, aimDir);
+	var yOffset = lengthdir_y(weaponInUse.wLength+wepOffsetDist, aimDir) + weaponInUse.yMove; 
 	//Spawn a bullet via new instance key
-	var bulletInstance = instance_create_depth(x+xOffset, centerY+yOffset, depth-100, weaponDefault.bullet);
+	var bulletInstance = instance_create_depth(x+xOffset, centerY+yOffset, depth-100, weaponInUse.bullet);
 	
 	//Bullet Direction determination
 	with(bulletInstance)

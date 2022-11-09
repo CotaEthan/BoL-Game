@@ -1,13 +1,16 @@
 {
   "spriteId": {
-    "name": "sBloodBullet",
-    "path": "sprites/sBloodBullet/sBloodBullet.yy",
+    "name": "sBrightBullet",
+    "path": "sprites/sBrightBullet/sBrightBullet.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "oBloodBullet",
+    "path": "objects/oBloodBullet/oBloodBullet.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -31,7 +34,7 @@
     "path": "folders/Objects/Bullet Types.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oBloodBullet",
+  "name": "oBrightBullet",
   "tags": [],
   "resourceType": "GMObject",
 }
