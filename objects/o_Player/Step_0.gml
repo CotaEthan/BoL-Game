@@ -5,6 +5,8 @@ leftKey = keyboard_check(ord("A"));
 upKey = keyboard_check(ord("W")); 
 downKey = keyboard_check(ord("S")); 
 weaponActivate = mouse_check_button(mb_left);
+//Look at rebinding to 1-5 keys on keyboard in future
+swapKey = mouse_check_button_pressed(mb_middle);
 
 //___________________________________Player Movement__________________________________
 #region
@@ -78,7 +80,26 @@ if(xSpeed == 0 && ySpeed == 0)
 
 
 #endregion
-//________________________Weapon Shooting__________________________________
+//__________________________Weapon Swapping_________________________________
+#region
+//Good practice, if you will be referencing a global variable multiple times within an event
+// -> Save this to a local variable, to prevent more calls than needed and limit scope
+var playerWeapons = global.playerWep;
+
+//Cycling through
+if(swapKey)
+{
+	wepSelector++;
+	
+	if(array_length(global.playerWep) <= wepSelector)
+	{
+		wepSelector = 0;
+	}
+	
+	weaponInUse = playerWeapons[wepSelector];
+}
+#endregion
+//________________________Weapon Shooting_______________________________
 #region
 if(shootTmr > 0) 
 {
@@ -107,3 +128,4 @@ if(weaponActivate && shootTmr <=0)
 	}
 }
 #endregion
+

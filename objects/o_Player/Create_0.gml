@@ -16,6 +16,7 @@ sprite[2] = sHoodFaceLeft;
 sprite[3] = sHoodDown;
 
 //_______________Weapon - Swap - Shoot___________
+#region
 //Variables Moved to struct
 ////////////////bullet = oBloodBullet;
 //Size offset for bullets to originate from
@@ -26,7 +27,7 @@ sprite[3] = sHoodDown;
 //Times in frames, 1:1
 shootTmr = 0;
 
-//_______________Weapons and aiming______________
+//_________________Weapon aiming_________________
 #region
 //create ofset for weapon in comparison to origin of sprite
 centerYOffset = -3;
@@ -37,18 +38,31 @@ aimDir = 0;
 #endregion
 
 //_______________Weapon Structs__________________
+#region
+//Moved to weapon_structs script
+/*
+	defaultWeapon = new weapon_Spawn(sDefaultWeapon, oBloodBullet, 10, 25, -3);
+	sqGun = new weapon_Spawn(sWepSpray, oBloodBullet, 16, 15, -1);
+	manGun = new weapon_Spawn(sManGun, oBloodBullet, 15, 10, 0 );
+	bigGun = new weapon_Spawn(sBigOlGun, oBrightBullet, 17, 4, 4);
 
-defaultWeapon = new weapon_Spawn(sDefaultWeapon, oBloodBullet, 10, 25, -3);
-sqGun = new weapon_Spawn(sWepSpray, oBloodBullet, 16, 15, -1);
-manGun = new weapon_Spawn(sManGun, oBloodBullet, 15, 10, 0 );
-bigGun = new weapon_Spawn(sBigOlGun, oBrightBullet, 17, 4, 4);
+	weaponInUse = bigGun;
+	Call still requires the "global." notation
+	weaponInUse = global.weaponList.WEAPON NAME HERE;
+*/
+
+//Pushing weapon to weapon inventory array
+array_push(global.playerWep, global.weaponList.defaultWeapon);
+array_push(global.playerWep, global.weaponList.sqGun);
+array_push(global.playerWep, global.weaponList.manGun);
+array_push(global.playerWep, global.weaponList.bigGun);
+
+weaponInUse = global.weaponList.defaultWeapon;
+wepSelector = 0;
 
 
+#endregion
 
-//Maybe rename from weaponDefault -> WeaponInUse or something along those lines in future
-weaponInUse = bigGun;
-
-
-
+#endregion
 
 
