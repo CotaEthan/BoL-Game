@@ -6,7 +6,7 @@ upKey = keyboard_check(ord("W"));
 downKey = keyboard_check(ord("S")); 
 weaponActivate = mouse_check_button(mb_left);
 //Look at rebinding to 1-5 keys on keyboard in future
-swapKey = mouse_check_button_pressed(mb_middle);
+swapKey = mouse_check_button_pressed(mb_right);
 
 //___________________________________Player Movement__________________________________
 #region
@@ -114,17 +114,33 @@ if(weaponActivate && shootTmr <=0)
 	// -> Inclusion of this variable may warrent removal/change of "weaponInUse.wLength+wepOffsetDist"
 	var xOffset = lengthdir_x(weaponInUse.wLength+wepOffsetDist, aimDir);
 	var yOffset = lengthdir_y(weaponInUse.wLength+wepOffsetDist, aimDir) + weaponInUse.yMove; 
-	//Spawn a bullet via new instance key
-	var bulletInstance = instance_create_depth(x+xOffset, centerY+yOffset, depth-100, weaponInUse.bullet);
+	var localSpread = weaponInUse.spread;
 	
-	//Bullet Direction determination
-	with(bulletInstance)
+	//Calculate degrees to spread bullets from starting point over every frame of movement
+	//Calculations explanations: 90 deg. signifies straight line, 
+	// -> Bullets shot away from 90 deg. center will require degrees from middle to outer bound
+	// --> total spread Ex: 45 deg. will be split at the median 90 deg. to be the split 22.5 deg.
+	// ---> Left of north median = subtract split deg. from median 90 deg.
+	// ----> Right of north median = add the split deg. to the median 90 deg.
+	//var spreadCalc = localSpread / weaponInUse.bulletAmount; <- off center when shooting odd # of pellets
+	var spreadCalc = localSpread/max(weaponInUse.bulletAmount-1, 1);
+	
+	//Loop to create bullets up to specified amount
+	for(var i = 0; i<weaponInUse.bulletAmount; ++i)
 	{
-		//dir value of the bullet Object - default 0
-		//other keyword is usable when working with an object within another object
-		// -> in this case the bullet object within the player object
-		// --> Without the other, it will look for aimDir variable within the bullet object, bad
-		dir = other.aimDir;
+		//Spawn a bullet via new instance key
+		var bulletInstance = instance_create_depth(x+xOffset, centerY+yOffset, depth-100, weaponInUse.bullet);
+	
+		//Bullet Direction determination
+		with(bulletInstance)
+		{
+			//dir value of the bullet Object - default 0
+			//other keyword is usable when working with an object within another object
+			// -> in this case the bullet object within the player object
+			// --> Without the other, it will look for aimDir variable within the bullet object, bad
+			// ---> Original line dir = other.aimDir; <- before spread implementation
+			dir = other.aimDir - localSpread/2 + spreadCalc*i;
+		}
 	}
 }
 #endregion

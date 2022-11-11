@@ -1,13 +1,15 @@
 //_______________Weapon Structs__________________
 //Structs to organize and call different weapons and their poperties
 //Adding and = Value in the header creates a default value, helps avoid missing info errors
-function weapon_Spawn(_sprite = sDefaultWeapon, _bullet = sBloodBullet, _wLength = 0, _shtCooldwn = 0, _yMove = 0) constructor
+function weapon_Spawn(_sprite = sDefaultWeapon, _bullet = oBloodBullet, _wLength, _shtCooldwn, _yMove, _bulletAmount = 1, _spread = 0) constructor
 {
 	sprite = _sprite;
 	bullet = _bullet;
 	wLength = _wLength;
 	shtCooldwn = _shtCooldwn;
 	yMove = _yMove;
+	bulletAmount = _bulletAmount;
+	spread = _spread;
 }
 
 
@@ -17,9 +19,9 @@ function weapon_Spawn(_sprite = sDefaultWeapon, _bullet = sBloodBullet, _wLength
 //use "global." - dot notation, as "globalvar" definition keyword is for other purpose...
 global.weaponList =
 {
-	defaultWeapon : new weapon_Spawn(sDefaultWeapon, oBloodBullet, 10, 25, -3),
+	defaultWeapon : new weapon_Spawn(, , 10, 25, -3),
 	sqGun : new weapon_Spawn(sWepSpray, oBloodBullet, 16, 15, -1),
-	manGun : new weapon_Spawn(sManGun, oBloodBullet, 15, 10, 0 ),
+	manGun : new weapon_Spawn(sManGun, oPelletBullet, 15, 30, 0, 8, 45 ),
 	bigGun : new weapon_Spawn(sBigOlGun, oBrightBullet, 17, 4, 4)
 }
 
