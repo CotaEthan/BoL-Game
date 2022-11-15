@@ -120,10 +120,14 @@ if(weaponActivate && shootTmr <=0)
 	//Calculations explanations: 90 deg. signifies straight line, 
 	// -> Bullets shot away from 90 deg. center will require degrees from middle to outer bound
 	// --> total spread Ex: 45 deg. will be split at the median 90 deg. to be the split 22.5 deg.
-	// ---> Left of north median = subtract split deg. from median 90 deg.
-	// ----> Right of north median = add the split deg. to the median 90 deg.
+	// ---> Left of north median = add split deg. from median 90 deg.
+	// ----> Right of north median = subtract split deg. to the median 90 deg.
 	//var spreadCalc = localSpread / weaponInUse.bulletAmount; <- off center when shooting odd # of pellets
-	var spreadCalc = localSpread/max(weaponInUse.bulletAmount-1, 1);
+	//Max -> returns larger value, avoid div. by 0 err
+	// --> -1 implemented to no longer calc by bullet amount, but space between each bullet
+	// ---> Produce more accurate total deg. for total deg. of spread
+	// ---->"Spread angle div. # of spaces"
+	var spreadCalc = localSpread/max(1, weaponInUse.bulletAmount-1);
 	
 	//Loop to create bullets up to specified amount
 	for(var i = 0; i<weaponInUse.bulletAmount; ++i)
@@ -132,14 +136,27 @@ if(weaponActivate && shootTmr <=0)
 		var bulletInstance = instance_create_depth(x+xOffset, centerY+yOffset, depth-100, weaponInUse.bullet);
 	
 		//Bullet Direction determination
+		//With keyword - address variables found within another object (object bullet instance)
 		with(bulletInstance)
 		{
 			//dir value of the bullet Object - default 0
 			//other keyword is usable when working with an object within another object
 			// -> in this case the bullet object within the player object
 			// --> Without the other, it will look for aimDir variable within the bullet object, bad
-			// ---> Original line dir = other.aimDir; <- before spread implementation
+			// ----> required because of the "with" keyword/object statement 
+			//Original line: dir = other.aimDir; <- before spread implementation
+			
+			//New line to calc spread
+			// -> Start at aimDir-localSpread/2 -> Progress angle to next bullet by +spreadcalc*iteration
 			dir = other.aimDir - localSpread/2 + spreadCalc*i;
+			
+			//Correct bullet orientation
+			//Added nonCircle variable to bullet objects to determine when to apply fix
+			if(nonCircle)
+			{
+				//Fixes angle by immediately applying the image angle to direction bullet
+				image_angle = dir;
+			}
 		}
 	}
 }

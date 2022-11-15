@@ -29,7 +29,7 @@ shootTmr = 0;
 
 //_________________Weapon aiming_________________
 #region
-//create ofset for weapon in comparison to origin of sprite
+//create offset for weapon in comparison to origin of sprite
 centerYOffset = -3;
 centerY = y + centerYOffset; //To be set within the Step Event
 
