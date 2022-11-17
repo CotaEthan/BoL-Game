@@ -3,6 +3,7 @@
 //Adding and = Value in the header creates a default value, helps avoid missing info errors
 function weapon_Spawn(_sprite = sDefaultWeapon, _bullet = oBloodBullet, _wLength, _shtCooldwn, _yMove, _bulletAmount = 1, _spread = 0) constructor
 {
+	//Speed and Distance are found w/in the bullet objects, not on weapon struct
 	sprite = _sprite;
 	bullet = _bullet;
 	wLength = _wLength;

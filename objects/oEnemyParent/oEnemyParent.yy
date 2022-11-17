@@ -1,10 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "o_Player",
+  "name": "oEnemyParent",
   "spriteId": {
-    "name": "sHoodDown",
-    "path": "sprites/sHoodDown/sHoodDown.yy",
+    "name": "sBlueMan",
+    "path": "sprites/sBlueMan/sBlueMan.yy",
   },
   "solid": false,
   "visible": true,
@@ -32,7 +32,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Player objects",
-    "path": "folders/Objects/Player objects.yy",
+    "name": "Enemy Related",
+    "path": "folders/Objects/Enemy Related.yy",
   },
 }

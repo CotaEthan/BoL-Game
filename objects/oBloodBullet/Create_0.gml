@@ -1,3 +1,6 @@
+//Had to add this post parent addition (oDamageNPC)
+event_inherited()
+
 //Basic global values
 dir = 0;
 spd = 5;

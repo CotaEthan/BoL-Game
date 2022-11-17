@@ -5,4 +5,4 @@
 event_inherited();
 
 spd = 3;
-maxDist = 50;
+maxDist = 80;

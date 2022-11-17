@@ -10,7 +10,7 @@ swapKey = mouse_check_button_pressed(mb_right);
 
 //___________________________________Player Movement__________________________________
 #region
-//step 1: get the direction - var keyword creates a local variable
+//Get the direction - var keyword creates a local variable
 var horizKey = rightKey - leftKey;  //x directions
 var vertKey = downKey - upKey;		//y directions
 

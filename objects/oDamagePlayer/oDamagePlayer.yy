@@ -1,10 +1,17 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "oDamagePlayer",
   "spriteId": null,
   "solid": false,
   "visible": true,
+  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "oDamage",
+    "path": "objects/oDamage/oDamage.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -24,8 +31,4 @@
     "name": "Damage Related",
     "path": "folders/Objects/Damage Related.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "oDamagePlayer",
-  "tags": [],
-  "resourceType": "GMObject",
 }

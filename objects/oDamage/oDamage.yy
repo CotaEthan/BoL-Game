@@ -1,7 +1,11 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "oDamage",
   "spriteId": null,
   "solid": false,
   "visible": true,
+  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
@@ -24,8 +28,4 @@
     "name": "Damage Related",
     "path": "folders/Objects/Damage Related.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "oDamage",
-  "tags": [],
-  "resourceType": "GMObject",
 }
