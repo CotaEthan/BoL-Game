@@ -8,5 +8,5 @@ draw_sprite_ext(sBlueMan, image_index, x, y, enemyFacing, 1, 0, c_white, 1);
 //draw_self()
 
 //Test -> string() forces value to string
-draw_text(x, y, string(hp));
+// draw_text(x, y, string(hp));
 
